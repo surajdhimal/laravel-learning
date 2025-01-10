@@ -40,10 +40,11 @@ class ProfileController extends Controller
         // $users = Profile::whereBetween('Age', [20, 25])->get();
         // $users = Profile::whereNotBetween('Age', [20, 25])->get();
         // $users = Profile::whereIn('city', ['Dharan', 'Nepalgunj'])->get();
-        $users = Profile::whereNotIn('city', ['Dharan', 'Nepalgunj'])->get();
+        // $users = Profile::whereNotIn('city', ['Dharan', 'Nepalgunj'])->get();
+        $users = Profile::get();
 
         // return $users;
-        return view('welcome', compact('users'));
+        return view('home', compact('users'));
     }
 
     /**
@@ -51,7 +52,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
