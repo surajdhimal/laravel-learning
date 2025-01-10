@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,7 +13,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        echo "Displaying all users.";
+        $users = Profile::get();
+
+        // return $users;
+        return view('home', compact('users'));
     }
 
     /**
@@ -20,23 +24,68 @@ class UserController extends Controller
      */
     public function create()
     {
-        echo "Ready to create a new user.";
+        return view('adduser');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        echo "New user created successfully.";
-    }
+{
+    // // Validate the incoming data
+    // $validated = $request->validate([
+    //     'username' => 'required|string|max:255',
+    //     'useremail' => 'required|email|unique:profiles,email',
+    //     'userage' => 'required|integer',
+    //     'usercity' => 'required|string',
+    //     'password' => 'required|string|min:8',  // Ensure password is required
+    // ]);
+
+    // // Create a new user instance
+    // $user = new Profile;
+
+    // // Set the user data
+    // $user->name = $request->username;
+    // $user->email = $request->useremail;
+    // $user->age = $request->userage;
+    // $user->city = $request->usercity;
+
+    // // Hash the password before saving
+    // $user->password = bcrypt($request->password);
+
+    // Save the user to the database
+    // $user->save();
+
+    // Validate the incoming data
+    $validated = $request->validate([
+        'username' => 'required|string|max:255',
+        'useremail' => 'required|email|unique:profiles,email',
+        'userage' => 'required|integer',
+        'usercity' => 'required|string',
+        'password' => 'required|string|min:8',
+    ]);
+
+    Profile::create([
+        'name' => $request->username,
+        'email' => $request->useremail,
+        'age' => $request->userage,
+        'city' => $request->usercity,
+        'password' => bcrypt($request->password),
+    ]);
+
+    // Redirect to the users index page
+    return redirect()->route('users.index')->with('status', 'New User Added Successfully.');
+}
+
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        echo "Displaying details for user ID: " . $id;
+        $users = Profile::find($id);
+        // return $users;
+        return view('viewuser', compact('users'));
     }
 
     /**
@@ -44,7 +93,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        echo "Editing user ID: " . $id;
+        return view('updateuser');
     }
 
     /**
