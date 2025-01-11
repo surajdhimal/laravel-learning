@@ -13,7 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = Profile::get();
+        // $users = Profile::get();
+        // $users = Profile::all();
+        $users = Profile::simplepaginate(4);
 
         // return $users;
         return view('home', compact('users'));
@@ -93,7 +95,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        return view('updateuser');
+        $users = Profile::find($id);
+        // return $users;
+        return view('updateuser', compact('users'));
     }
 
     /**
@@ -101,7 +105,31 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        echo "User ID: " . $id . " updated successfully";
+        // $users = Profile::find($id);
+
+        // $users->name = $request->username;
+        // $users->email = $request->useremail;
+        // $users->age = $request->userage;
+        // $users->city = $request->usercity;
+
+        // // return $users;
+        // $users->save();
+
+        $request->validate([
+            'username' => 'required|alpha',
+            'useremail' => 'required|email',
+            'userage' => 'required|numeric',
+            'usercity' => 'required|alpha',
+        ]);
+
+        $users = Profile::where('id', $id)->update([
+            'name' => $request->username,
+            'email' => $request->useremail,
+            'age' => $request->userage,
+            'city' => $request->usercity
+        ]);
+
+        return redirect()->route('users.index')->with('status', 'User Data Updated Successfully.');
     }
 
     /**
@@ -109,6 +137,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        echo "User ID: " . $id . " has been deleted";
+        $users = Profile::find($id);
+        // $users = Profile::where('email', 'nisha@example.com');
+        $users->delete();
+
+        // Profile::destroy($id);
+        // Profile::destroy(8,9);
+        // Profile::destroy([8,9]);
+
+        // Profile::truncate();
+
+        return redirect()->route('users.index')->with('status', 'User Data Deleted Successfully.');
     }
 }
