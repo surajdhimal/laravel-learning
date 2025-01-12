@@ -85,7 +85,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $users = Profile::find($id);
+        $users = Profile::findOrFail($id);
         // return $users;
         return view('viewuser', compact('users'));
     }
@@ -95,7 +95,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $users = Profile::find($id);
+        $users = Profile::findOrFail($id);
         // return $users;
         return view('updateuser', compact('users'));
     }
@@ -137,7 +137,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $users = Profile::find($id);
+        $users = Profile::findOrFail($id);
         // $users = Profile::where('email', 'nisha@example.com');
         $users->delete();
 
