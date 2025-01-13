@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(ProfilesTableSeeder::class);
+        $this->call(StudentSeeder::class);
     }
 }
