@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id(); // Creates an auto-incrementing ID column
             $table->string('name'); // For the student's name
-            $table->integer('age'); // For the student's city
+            $table->integer('age'); // For the student's age
             $table->string('city'); // For the student's city
             $table->timestamps(); // Creates 'created_at' and 'updated_at' columns
         });
