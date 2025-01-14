@@ -9,7 +9,8 @@ class Student extends Model
     protected $fillable = ['name', 'age', 'city'];
 
     protected $table = "my_table";
-    protected $primaryKey = "student_id";
+    // protected $primaryKey = "student_id";
+    protected $primaryKey = "id";
 
     public $timestamps = false;
     // const CREATED_AT = 'creation_date';
@@ -18,4 +19,8 @@ class Student extends Model
     protected $attributes = [
         'city' => 'Dharan'
     ];
+
+    public function contacts(){
+        return $this->hasOne(Contact::class);
+    }
 }
