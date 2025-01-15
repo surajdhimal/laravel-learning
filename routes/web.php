@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -21,3 +23,6 @@ Route::get('/', [ProfileController::class, 'index']);
 Route::resource('students', StudentController::class);
 
 Route::get('/contacts', [ContactController::class, 'show']);
+
+Route::resource('members', MemberController::class);
+Route::resource('post', PostController::class);
