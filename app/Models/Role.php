@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Role extends Model
+{
+    public function employees(){
+        return $this->belongsToMany(Employee::class, 'employee_role', 'user_id', 'role_id');
+    }
+}
