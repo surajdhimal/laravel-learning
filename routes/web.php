@@ -5,8 +5,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
@@ -34,3 +36,6 @@ Route::resource('employees', EmployeeController::class);
 Route::resource('roles', RoleController::class);
 
 Route::resource('staff', StaffController::class);
+
+Route::resource('customers', CustomerController::class);
+Route::resource('orders', OrderController::class);
