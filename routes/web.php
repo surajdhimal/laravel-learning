@@ -15,6 +15,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 use phpDocumentor\Reflection\Types\Resource_;
 
@@ -47,3 +50,8 @@ Route::resource('orders', OrderController::class);
 Route::resource('country', CountryController::class);
 Route::resource('client', ClientController::class);
 Route::resource('blog', BlogController::class);
+
+Route::resource('followers', FollowerController::class);
+Route::resource('status', StatusController::class);
+Route::resource('images', ImageController::class);
+
