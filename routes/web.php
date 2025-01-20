@@ -18,6 +18,8 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use phpDocumentor\Reflection\Types\Resource_;
 
@@ -55,3 +57,5 @@ Route::resource('followers', FollowerController::class);
 Route::resource('status', StatusController::class);
 Route::resource('images', ImageController::class);
 
+Route::resource('video',VideoController::class);
+Route::resource('submission',SubmissionController::class);
