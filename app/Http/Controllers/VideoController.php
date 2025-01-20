@@ -19,14 +19,24 @@ class VideoController extends Controller
         // $video = Video::find(1);
         // return $video->contributors;
 
-        $video = Video::with('contributors')->find(1);
+        // $video = Video::with('contributors')->find(1);
         // return $video;
-        echo "<h1>$video->title</h1>";
-        echo "<h4>$video->url</h4>"."<hr>";
-        foreach ($video->contributors as $comment) {
-            echo $comment->detail . "<br>";
-            echo "<hr>";   
-        }
+        // echo "<h1>$video->title</h1>";
+        // echo "<h4>$video->url</h4>"."<hr>";
+        // foreach ($video->contributors as $comment) {
+        //     echo $comment->detail . "<br>";
+        //     echo "<hr>";   
+        // }
+
+        // $video = Video::with('latestComment')->find(1);
+        // $video = Video::with('oldestComment')->find(1);
+        // $video = Video::with('BestComment')->find(1);
+        // $video = Video::with('leastComment')->find(1);
+        // return $video;
+
+        $video = Video::find(1);
+        // return $video->leastComment;
+        return $video->BestComment;
     }
 
     /**
