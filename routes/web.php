@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClipController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -19,6 +20,8 @@ use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use phpDocumentor\Reflection\Types\Resource_;
@@ -59,3 +62,7 @@ Route::resource('images', ImageController::class);
 
 Route::resource('video',VideoController::class);
 Route::resource('submission',SubmissionController::class);
+
+Route::resource('update', UpdateController::class);
+Route::resource('clip', ClipController::class);
+Route::resource('tag', TagController::class);
