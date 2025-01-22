@@ -21,6 +21,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -66,3 +67,5 @@ Route::resource('submission',SubmissionController::class);
 Route::resource('update', UpdateController::class);
 Route::resource('clip', ClipController::class);
 Route::resource('tag', TagController::class);
+
+Route::resource('test', TestController::class);
