@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ClipController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -69,3 +71,6 @@ Route::resource('clip', ClipController::class);
 Route::resource('tag', TagController::class);
 
 Route::resource('test', TestController::class);
+
+Route::resource('account', AccountController::class);
+Route::resource('thread', ThreadController::class);
