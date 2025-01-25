@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Member;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use User;
 
 class PostController extends Controller
 {
@@ -37,9 +38,14 @@ class PostController extends Controller
         //     $query->where('name', 'Sita Sharma')->orWhere('name','Dipendra Gurung');
         // })->get();
 
-        $users = Member::where('name', 'Sita Sharma')->get();
-        $posts = Post::whereBelongsTo($users)->get();
-        return $users;
+        // $users = Member::where('name', 'Sita Sharma')->get();
+        // $posts = Post::whereBelongsTo($users)->get();
+        // return $users;
+
+        $posts = Post::withWhereHas("members",function($query){
+            $query->active();
+        })->whereStatus(1)->get();
+        return $posts;
     }
 
     /**
