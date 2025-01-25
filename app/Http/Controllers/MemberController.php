@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Member;
 use App\Models\Post;
+use App\Models\Scopes\MemberScope;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -26,8 +27,16 @@ class MemberController extends Controller
         //                 ->with('posts')
         //                 ->get();
         // $members = Member::withCount('posts')->get();
-        $members = Member::select(['name', 'email'])->withCount('posts')->get();
+        // $members = Member::select(['name', 'email'])->withCount('posts')->get();
 
+        // $members = Member::with("posts")->active()->sort()->get();
+        // $members = Member::with("posts")->city(["Goa", "Delhi"])->active()->sort()->get();
+        // $members = Member::with("posts")->sort()->get();
+        // $members = Member::with("posts")->city(["Delhi"])->sort()->get();
+        // $members = Member::with("posts")->city(["Mumbai"])->sort()->get();
+        // $members = Member::city(["Delhi"])->sort()->get();
+        // $members = Member::withoutGlobalScope(MemberScope::class)->get();
+        $members = Member::withoutGlobalScope(MemberScope::class)->city(["Delhi"])->sort()->get();
         return $members;
     }
 
