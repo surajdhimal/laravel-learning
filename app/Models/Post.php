@@ -8,6 +8,6 @@ class Post extends Model
 {
     protected $guarded = [];
     public function members(){
-        return $this->belongsTo(Member::class, 'user_id');
+        return $this->belongsTo(Member::class, "user_id");
     }
 }
