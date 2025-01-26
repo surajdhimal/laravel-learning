@@ -12,6 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ExplorerController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PostController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\VoiceController;
 use Illuminate\Support\Facades\Route;
 use phpDocumentor\Reflection\Types\Resource_;
 
@@ -74,3 +76,6 @@ Route::resource('test', TestController::class);
 
 Route::resource('account', AccountController::class);
 Route::resource('thread', ThreadController::class);
+
+Route::resource('explorer', ExplorerController::class);
+Route::resource('voice', VoiceController::class);
